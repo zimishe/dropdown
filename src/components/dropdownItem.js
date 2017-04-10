@@ -8,7 +8,7 @@ class DropdownItem extends Component {
     render() {
         return (
             <label>
-                <input type="radio" />
+                <input type="radio" name="selected_country" onChange={this.props.onSelectedValueChanged.bind(this.props.value)}/>
                 {this.props.text}
             </label>
         )

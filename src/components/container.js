@@ -5,7 +5,7 @@ import DropDown from './dropdown'
 class Container extends Component {
     render() {
         return (
-            <DropDown />
+            <DropDown title="Select country" />
         )
     }
 }

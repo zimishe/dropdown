@@ -10,8 +10,9 @@ import DropdownItem from './dropdownItem'
 const mapDispatchToProps = function(dispatch) {
     return {
         dispatch,
-        onSelectedValueChanged: (event) => {
-            event.preventDefault();
+        onSelectedValueChanged: (value, event) => {
+            console.log('val', value);
+            console.log('target', event.target);
         }
     };
 };
@@ -33,10 +34,9 @@ class DropDown extends Component {
                 </div>
                 {
                     data.countries.map((el, i) => 
-                        <DropdownItem key={i} value={el.id} text={el.name} isSelected={false} />
+                        <DropdownItem key={i} value={el.id} text={el.name} isSelected={false} onSelectedValueChanged={this.props.onSelectedValueChanged} />
                     )
                 }
-                
             </div>
         )
     }
