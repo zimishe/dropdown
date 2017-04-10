@@ -7,7 +7,7 @@ import React, { Component } from 'react'
 class DropdownItem extends Component {
     render() {
         return (
-            <label>
+            <label className="dropdown--item">
                 <input type="radio"
                        name="selected_country"
                        onChange={this.props.onSelectedValueChanged}/>

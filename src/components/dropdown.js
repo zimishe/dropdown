@@ -7,16 +7,18 @@ import store from './../reducers'
 
 import DropdownItem from './dropdownItem'
 
-import { setCountry } from './../actions'
+import { setCountry, toggleMenu } from './../actions'
 
 const mapDispatchToProps = function(dispatch) {
     return {
         dispatch,
         onSelectedValueChanged: (value) => {
             store.dispatch(setCountry(value));
+            toggleMenu();
+        },
 
-            console.log('selected country with id ', value);
-            // console.log('st', store.getState())
+        openDropdown: () => {
+            toggleMenu();
         }
     };
 };
@@ -28,6 +30,28 @@ const mapStateToProps = function() {
 };
 
 class DropDown extends Component {
+    componentDidMount() {
+        let dropdownItems = Array.from(document.querySelectorAll('.dropdown--item')),
+            container = document.querySelector('.dropdown');
+
+        dropdownItems.forEach((el, i) => {
+            let delay = i*0.04;
+            el.style.transitionDelay = delay+'s';
+        })
+
+        document.body.onclick = (e) => {
+            let target = e.target;
+
+            while (target != container) {
+                if (target.classList.contains('d')) {
+                    // нашли элемент, который нас интересует!
+                    return;
+                }
+                target = target.parentNode;
+            }
+        }
+    }
+
     render() {
         let data = this.props.data,
             selectedCountryId = data.selectedCountryId,
@@ -47,20 +71,22 @@ class DropDown extends Component {
 
         return (
             <div className="dropdown">
-                <div className="dropdown--selected">
-                    <h3>{checkSelected()}</h3>
+                <div className="dropdown--selected" onClick={this.props.openDropdown.bind(this)}>
+                    {checkSelected()}
                 </div>
-                {
-                    data.countries.map((el, i) => 
-                        <DropdownItem key={i}
-                                      value={el.id}
-                                      text={el.name}
-                                      isSelected={
-                                          (selectedCountryId === el.id)
-                                      }
-                                      onSelectedValueChanged={this.props.onSelectedValueChanged.bind(this, el.id)} />
-                    )
-                }
+                <div className="dropdown--items">
+                    {
+                        data.countries.map((el, i) =>
+                            <DropdownItem key={i}
+                                          value={el.id}
+                                          text={el.name}
+                                          isSelected={
+                                              (selectedCountryId === el.id)
+                                          }
+                                          onSelectedValueChanged={this.props.onSelectedValueChanged.bind(this, el.id)} />
+                        )
+                    }
+                </div>
             </div>
         )
     }

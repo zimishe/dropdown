@@ -25,9 +25,9 @@ input, button {
 
 body {
     height: 100vh;
-    background: #e2e7ed;
+    background: #f5f6f7;
     width: 100%;
-    font: 16px/20px $light;
+    font: 16px/20px $regular;
     color: #fff;
     
     &.fixed {
@@ -55,12 +55,7 @@ a, a:hover, a:active, a:focus, a:visited {
 }
 
 p, a, li, span {
-    font: rem(14px, 16px) $light;
-    color: #000;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: $bold;
+    font: rem(14px, 16px) $regular;
     color: #000;
 }
 
