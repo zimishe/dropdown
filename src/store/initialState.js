@@ -3,7 +3,7 @@
  */
 
 const initialState = {
-    selectedCountryId: '1',
+    selectedCountryId: '',
     countries: [
         {
             id: '1',

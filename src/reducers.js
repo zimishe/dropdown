@@ -8,9 +8,10 @@ import { createStore } from 'redux'
 let reducer = function reducer(state = initialState, action) {
     switch (action.type) {
         case 'COUNTRY_CHOSEN' : return {
-            selectedCountryId: action.selectedCountryId
-        };     
-        
+            selectedCountryId: action.selectedCountryId,
+            countries: state.countries
+        };
+
         default : return state
     }
 };

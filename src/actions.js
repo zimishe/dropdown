@@ -4,6 +4,6 @@
 
 export function setCountry(selectedCountryId) {
     return {
-        type: 'COUNTRY_CHOSEN', finalRoute: selectedCountryId
+        type: 'COUNTRY_CHOSEN', selectedCountryId: selectedCountryId
     }
 }
