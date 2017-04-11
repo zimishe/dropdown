@@ -32,22 +32,23 @@ const mapStateToProps = function() {
 class DropDown extends Component {
     componentDidMount() {
         let dropdownItems = Array.from(document.querySelectorAll('.dropdown--item')),
-            container = document.querySelector('.dropdown');
+            container = document.querySelector('.dropdown'),
+            dropdown  = document.querySelector('.dropdown--items');
 
         dropdownItems.forEach((el, i) => {
             let delay = i*0.04;
             el.style.transitionDelay = delay+'s';
-        })
+        });
 
-        document.body.onclick = (e) => {
+        document.body.onclick = function(e) {
             let target = e.target;
-
-            while (target != container) {
-                if (target.classList.contains('d')) {
-                    // нашли элемент, который нас интересует!
-                    return;
+            
+            if ((target.tagName === 'BODY') || (target.id === 'root')) {
+                
+                if (container !== null) {
+                    container.classList.remove('dropdown-is-opened');
+                    dropdown.classList.remove('dropdown--items-opened');
                 }
-                target = target.parentNode;
             }
         }
     }
