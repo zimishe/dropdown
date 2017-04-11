@@ -58,7 +58,7 @@ class DropDown extends Component {
             selectedCountryId = data.selectedCountryId,
             title = this.props.title;
 
-        let selectedCountry = data.countries.filter((el) =>
+        let selectedCountry = data.countries.filter(el =>
             el.id === selectedCountryId
         );
 

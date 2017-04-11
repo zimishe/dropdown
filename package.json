@@ -1,6 +1,7 @@
 {
   "name": "dropdown.loc",
   "version": "0.1.0",
+  "homepage": "./",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.9.5"
