@@ -1,3 +1,15 @@
+.scss files are in 'assets/scss' directory,
+.js files - in 'src/' directory
+production build - 'build/' directory
+
+also there's no 'node_modules/' directory because of it's size
+
+repository with the project can be found here - https://github.com/zimishe/dropdown
+
+
+// ============================================
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
